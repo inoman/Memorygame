@@ -11,23 +11,21 @@
 #define LED_BLUE    13
 #define LED_YELLOW  5
 
-// Button pin definitions
+
 #define NAPPI_RED    9
 #define NAPPI_GREEN  2
 #define NAPPI_BLUE   12
 #define NAPPI_YELLOW 6
 
-// Buzzer pin definitions
 #define BUZZER1  4
 #define BUZZER2  7
 
-// Define game parameters
+
 #define KIERROKSET_VOITTO      13 //KIERROSTEN MÄÄRÄ, JONKA JÄLKEEN PELIN VOITTAA
 #define AIKARAJA   3000 //AIKA PAINAA NAPPIA, JOS MENEE YLI 3 SEKUNTIA PELI LOPETETAAN
 
 #define MUISTIPELI  0
 
-// Game state variables
 byte pelimuoto = MUISTIPELI; //PELIMUOTO MÄÄRITELLÄÄN
 byte jarjestus[32]; //TÄHÄN TALLETETAAN PELIN AIKANA SYNTYNYT JÄRJESTYS
 byte kierrokset = 0; //KIERROKSET, JOILTA PÄÄSTY LÄPI
@@ -198,7 +196,7 @@ byte tarkista_nappi(void)
 
 void aani_painettaessa(byte y, int buzz_pituusms)
 {
-  setLEDs(y); //Turn on a given LED
+  setLEDs(y); 
 
   //SOITTAA ÄÄNEN NAPPIA PAINETTAESSA
   switch(y) 
@@ -228,7 +226,6 @@ void buzz_aani(int buzz_pituusms, int buzz_viive)
   {
     buzz_pituusus -= buzz_viive * 2;
 
-    // Toggle the buzzer at various speeds
     digitalWrite(BUZZER1, LOW);
     digitalWrite(BUZZER2, HIGH);
     delayMicroseconds(buzz_viive);
@@ -239,7 +236,7 @@ void buzz_aani(int buzz_pituusms, int buzz_viive)
   }
 }
 
-// Play the winner sound and lights
+
 void soita_voitto(void)
 {
   setLEDs(VALINTA_GREEN | VALINTA_BLUE);
